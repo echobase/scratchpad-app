@@ -1,0 +1,112 @@
+/* src/app/advocates/AdvocatesTable.module.css */
+.tableUsers {
+  --base: #398b93;
+  --radius: 10px;
+  --pad: 10px;
+
+  border: 1px solid color-mix(in srgb, var(--base), black 5%);
+  border-radius: var(--radius);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.1);
+  max-width: calc(100% - 2rem);
+  margin: 1rem auto;
+  overflow: hidden;
+  width: 100%;
+}
+
+.header {
+  background: color-mix(in srgb, var(--base), black 5%);
+  color: white;
+  font-size: 1.25rem;
+  padding: 1rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Table base */
+.table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.table th,
+.table td {
+  color: color-mix(in srgb, var(--base), black 10%);
+  padding: var(--pad);
+}
+
+/* Head */
+.table thead th {
+  background: color-mix(in srgb, var(--base), white 50%);
+  font-weight: 500;
+  text-align: left;
+}
+
+/* Zebra striping (tbody only) */
+.table tbody tr:nth-child(even) {
+  background: #fff;
+}
+.table tbody tr:nth-child(odd) {
+  background: color-mix(in srgb, var(--base), white 55%);
+}
+
+/* Mobile stacked layout using data-labels */
+@media (max-width: 700px) {
+  .table {
+    display: block;
+  }
+  .table thead {
+    /* keep it in the DOM for semantics; visually hide */
+    position: absolute;
+    left: -10000px;
+    top: auto;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+  }
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+    width: 100%;
+  }
+  .table tr {
+    background: white;
+    border: 1px solid color-mix(in srgb, var(--base), white 20%);
+    border-radius: var(--radius);
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+    margin: 0.5rem 0;
+    padding: 0;
+  }
+  .table td {
+    position: relative;
+    padding: 8px 1rem 8px 7.5rem; /* room for label */
+    text-align: left;
+  }
+  .table td::before {
+    content: attr(data-label) ": ";
+    position: absolute;
+    left: 1rem;
+    top: 8px;
+    font-size: 0.85em;
+    color: color-mix(in srgb, var(--base), white 30%);
+  }
+}
+
+/* Optional round images, if you later add an avatar column */
+.roundImg {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+}
+
+@media (max-width: 500px) {
+  .header {
+    background: transparent;
+    color: color-mix(in srgb, var(--base), white 60%);
+    font-size: 2rem;
+    font-weight: 700;
+    padding: 0;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+  }
+}
